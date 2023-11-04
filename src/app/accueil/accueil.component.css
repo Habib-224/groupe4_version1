@@ -1,0 +1,41 @@
+.Container_Card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.Card{
+  width: 330px;
+  height: 150px;
+  background-color: white;
+  padding: 1em;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.Card p{
+  font-size: 17px;
+}
+
+.Container_table{
+  width: 80%;
+  margin: auto;
+  margin-top: 1em;
+}
+
+.Search{
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: 5em;
+  margin-right: 150px;
+}
+
+.form{
+  display: flex;
+  gap: 10px;
+}
+
+.add{
+  margin-left: 150px;
+}
