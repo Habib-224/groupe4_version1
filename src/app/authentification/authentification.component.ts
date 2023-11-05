@@ -17,12 +17,12 @@ export class AuthentificationComponent {
       email: 'habib@gmail.com',
       password: 'habib',
       contact: [{
-        id: '',
-        nom: '',
-        prenom: '',
-        email:'',
-        numero: '',
-        photo: '',
+        id: '1',
+        nom: 'bah',
+        prenom: 'habib',
+        email:'habib774@gmail.com',
+        numero: '781433570',
+        photo: 'dfdf',
         etat :'0'
       }]
     },
@@ -71,6 +71,7 @@ export class AuthentificationComponent {
   }
 
   userid: any = 1;
+  userfoundid: any;
 
 
   submitFunction(event: Event):void {
@@ -81,9 +82,12 @@ export class AuthentificationComponent {
 
       let datastring = localStorage.getItem('user');
       let existingData = datastring ? JSON.parse(datastring) : [];
-      console.log(existingData.length);
+      // console.log(existingData.length);
 
       let userFound = this.user.find(user => user.email === this.formData.email && user.password === this.formData.pass);
+      this.userfoundid=userFound.id
+      // console.log(this.userfoundid)
+      // console.log(userFound);
       if (userFound) {
         Swal.fire({
         position: 'center',
@@ -92,7 +96,7 @@ export class AuthentificationComponent {
         showConfirmButton: false,
         timer: 1500
       })
-        this.router.navigate(['/accueil']);
+        this.router.navigate(['/accueil/',this.userfoundid]);
       }else{
         Swal.fire({
         icon: 'error',
@@ -115,17 +119,27 @@ export class AuthentificationComponent {
     if (this.formDataregister.emailregister !== '' && this.formDataregister.passregister !== '') {
       let datastring = localStorage.getItem('user');
       let existingData = datastring ? JSON.parse(datastring) : [];
+      // console.log(existingData)
       this.userid = existingData.length;
-
-
       let email = this.formDataregister.emailregister
       let pass = this.formDataregister.passregister;
+      // let contact = [{
+      //   id: '',
+      //   nom: '',
+      //   prenom: '',
+      //   email:'',
+      //   numero: '',
+      //   photo: '',
+      //   etat :''
+      // }]
 
       existingData.push({
-      id: existingData.length + 1, // Vous pouvez générer un ID unique ici
-      email: email,
-      password: pass
+        id: existingData.length + 1, // Vous pouvez générer un ID unique ici
+        email: email,
+        password: pass,
+        contact:[{id:'',nom:'',prenom:'',email:'',numero:'',photo:'',etat:''}]
       });
+
 
 
       // localStorage.setItem('user', JSON.stringify(this.user));
@@ -138,7 +152,9 @@ export class AuthentificationComponent {
        showConfirmButton: false,
        timer: 1500
       })
-      this.router.navigate(['/accueil']);
+
+      this.router.navigate(['/accueil/',this.userfoundid]);
+
       //
     } else {
       Swal.fire({

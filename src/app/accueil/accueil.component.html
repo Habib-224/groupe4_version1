@@ -1,9 +1,10 @@
 <app-header></app-header>
 <div class="Container">
+  <p class="username d-flex justify-content-end">{{userName}}</p>
   <div class="Container_Card mt-5">
     <div class="Card">
       <p class="text-center">Contact <i class="fa-solid fa-phone"></i></p>
-      <h1 class="text-center">5</h1>
+      <h1 class="text-center">{{contactlength}}</h1>
     </div>
     <div class="Card">
       <p class="text-center">Corbeille</p>
@@ -11,7 +12,7 @@
     </div>
     <div class="Card">
       <p class="text-center">User</p>
-      <h1 class="text-center">2</h1>
+      <h1 class="text-center">{{iduser}}</h1>
     </div>
   </div>
   <div class="Search">
@@ -38,31 +39,17 @@
           <th scope="col" colspan="2">Action</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody *ngFor="let contact  of usernumero; let i = index">
+        <ng-container *ngIf="i !== 0">
         <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>06-45-54-54-54</td>
-          <td><button class="btn btn-warning">Modifier</button>&nbsp;&nbsp;<button class="btn btn-danger">Modifier</button></td>
+          <th scope="row">#</th>
+          <td>{{contact.nom }}</td>
+          <td>{{contact.prenom }}</td>
+          <td>{{contact.email }}</td>
+          <td>{{contact.numero }}</td>
+          <td><button class="btn btn-warning">Modifier</button>&nbsp;&nbsp;<button class="btn btn-danger" (click)="Archiverfunction(contact.id)">Archiver</button></td>
         </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-          <td>06-45-54-54-54</td>
-          <td><button class="btn btn-warning">Modifier</button>&nbsp;&nbsp;<button class="btn btn-danger">Modifier</button></td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry the Bird</td>
-          <td>Bird</td>
-          <td>@twitter</td>
-          <td>06-45-54-54-54</td>
-          <td><button class="btn btn-warning">Modifier</button>&nbsp;&nbsp;<button class="btn btn-danger">Modifier</button></td>
-        </tr>
+        </ng-container>
       </tbody>
     </table>
   </div>
@@ -77,26 +64,26 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="">
+        <form action="" (submit)="Contactfunction($event)">
           <div class="col-md-12">
             <label for="validationCustom01" class="form-label">Nom:</label>
-            <input type="text" class="form-control" id="validationCustom01" placeholder="Nom" required>
+            <input type="text" name="nom" class="form-control" id="validationCustom01" placeholder="Nom" required [(ngModel)]="formDatacontact.nom">
           </div>
           <div class="col-md-12">
             <label for="validationCustom01" class="form-label">Prenom:</label>
-            <input type="text" class="form-control" id="validationCustom01" placeholder="Prenom" required>
+            <input type="text" name="Prenom" class="form-control" id="validationCustom01" placeholder="Prenom" required [(ngModel)]="formDatacontact.prenom">
           </div>
           <div class="col-md-12">
             <label for="validationCustom01" class="form-label">Email:</label>
-            <input type="email" class="form-control" id="validationCustom01" placeholder="email" required>
+            <input type="email" name="email" class="form-control" id="validationCustom01" placeholder="email" required [(ngModel)]="formDatacontact.email">
           </div>
           <div class="col-md-12">
             <label for="validationCustom01" class="form-label">Numero:</label>
-            <input type="number" class="form-control" id="validationCustom01" placeholder="Numero" required>
+            <input type="text" name="numero" class="form-control" id="validationCustom01" placeholder="Numero" required [(ngModel)]="formDatacontact.numero">
           </div>
           <div class="input-group mt-3 mb-2">
             <label class="input-group-text" for="inputGroupFile01">Upload</label>
-            <input type="file" class="form-control" id="inputGroupFile01">
+            <input type="file" name="photo" class="form-control" id="inputGroupFile01" [(ngModel)]="formDatacontact.file">
           </div>
           <button class="btn btn-primary">Submit</button>
         </form>
@@ -108,5 +95,8 @@
     </div>
   </div>
 </div>
+
+
+
 
 

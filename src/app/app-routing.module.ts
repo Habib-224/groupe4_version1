@@ -7,7 +7,7 @@ AccueilComponent
 
 const routes: Routes = [
     { path: '', component:  AuthentificationComponent},
-    { path: 'accueil', component: AccueilComponent },
+    { path: 'accueil/:id', component: AccueilComponent },
 
 ];
 
