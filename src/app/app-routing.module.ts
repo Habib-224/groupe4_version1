@@ -6,8 +6,9 @@ import { AuthentificationComponent } from './authentification/authentification.c
 AccueilComponent
 
 const routes: Routes = [
-    { path: '', component:  AuthentificationComponent},
-    { path: 'accueil/:id', component: AccueilComponent },
+  { path: '', component:  AuthentificationComponent},
+  { path: 'accueil/:id', component: AccueilComponent },
+  {path: 'corbeille/:id',component:CorbeilleComponent}
 
 ];
 

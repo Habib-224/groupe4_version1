@@ -1,4 +1,16 @@
-<app-header></app-header>
+<div class="Container">
+  <div class="Container_Header">
+    <div class="Menu">
+      <ul>
+        <li>Logo</li>
+        <li>Home</li>
+        <li><a [routerLink]="['/corbeille',iduser]">Corbeille</a></li>
+        <li>Deconnexion</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
 <div class="Container">
   <p class="username d-flex justify-content-end">{{userName}}</p>
   <div class="Container_Card mt-5">
