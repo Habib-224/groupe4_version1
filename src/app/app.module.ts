@@ -8,6 +8,7 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { CorbeilleComponent } from './corbeille/corbeille.component';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { HeaderComponent } from './header/header.component';
     AuthentificationComponent,
     AccueilComponent,
     CorbeilleComponent,
-    HeaderComponent
+    HeaderComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

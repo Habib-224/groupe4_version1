@@ -47,7 +47,7 @@ export class AccueilComponent {
         this.usernumero = userFound.contact;
         this.contactlength = this.usernumero.length - 1
         this.userName = userFound.email;
-        console.log(userFound)
+        // console.log(userFound)
         // console.log(this.usernumero); // Vérifiez la console pour voir si les contacts sont correctement récupérés
       }else {
         console.log('Utilisateur non trouvé'); // Affichez un message d'erreur si l'utilisateur n'est pas trouvé
@@ -105,6 +105,31 @@ export class AccueilComponent {
 
   Archiverfunction(id: number) {
     alert(id);
+     this.datastring = localStorage.getItem('user');
+      let existingData = this.datastring ? JSON.parse(this.datastring) : [];
+
+      let user: any[] = existingData;
+
+      //@ts-ignore
+
+      let urlUserId = parseInt(this.route.snapshot.paramMap.get('id') || '');
+
+    let userFound = user.find(existingData => existingData.id === urlUserId);
+    console.log(userFound)
+    if (userFound) {
+      //@ts-ignore
+      let usercomptefound = userFound.contact.find(contact => contact.id === id)
+      if (usercomptefound) {
+        // console.log(usercomptefound.etat)
+        usercomptefound.etat = '0';
+        //  localStorage.setItem('user', JSON.stringify(usercomptefound));
+        localStorage.setItem('user', JSON.stringify(existingData));
+      } else {
+        console.log("user not found")
+      }
+    }else {
+      console.log('Utilisateur non trouvé'); // Affichez un message d'erreur si l'utilisateur n'est pas trouvé
+    }
   }
 
 }
