@@ -1,1 +1,152 @@
-<p>corbeille works!</p>
+
+<!-- <input class="form-control" type="text" placeholder="Rechercher un contact..."  [(ngModel)]="searchText"> -->
+<!-- <div class="container p-5ng">
+  <h1 class="text-center ">{{titreTableau}}</h1>
+  <div class="row cardp mb-5">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Contact Suprimés</h5>
+        <h1 class="card-subtitle mb-2 text-body-secondary">127</h1>
+        
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Contacts Restaurés</h5>
+        <h1 class="card-subtitle mb-2 text-body-secondary">27</h1>
+        
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Contacts Inactifs</h5>
+        <h1 class="card-subtitle mb-2 text-body-secondary">10</h1>
+      </div>
+    </div>
+    <button class="btn ajout  btn-primary btn-sm" (click)="ajouterContactAuLocalStorage()">Ajouter un contact</button>
+
+  </div>
+  <table class="table table-hover  table-responsive-lg">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Adresse Email</th>
+        <th>restaurer</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let contact of contacts ">
+        <td>{{contact.id}}</td>
+        <td>{{contact.nom}}</td>
+        <td>{{contact.prenom}}</td>
+        <td>{{contact.email}}</td>
+        <button class=" btn-primary bg-secondary text-white border-0 " (click)="supprimerContact(contact.id)">Restaurer</button>
+       
+
+
+      </tr>
+    </tbody>
+  </table>
+  
+</div> -->
+
+<!-- <app-header></app-header> -->
+<div class="Container">
+    <div class="Container_Card mt-5">
+      <div class="Card">
+        <p class="text-center">Contact Suprimés <i class="fa-solid fa-phone"></i></p>
+        <h1 class="text-center">5</h1>
+      </div>
+      <div class="Card">
+        <p class="text-center">Contact Suprimés</p>
+        <h1 class="text-center">3</h1>
+      </div>
+      <div class="Card">
+        <p class="text-center">User</p>
+        <h1 class="text-center">2</h1>
+      </div>
+    </div>
+    <div class="Search">
+      <div class="add">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add User</button>
+      </div>
+  
+      <div class="formulaire">
+          <form action="" class="form">
+            <input type="text" class="form-control" id="validationCustom01" placeholder="Search" required>
+            <button type="submit" class="btn btn-primary">Search</button>
+          </form>
+      </div>
+    </div>
+    <div class="Container_table">
+      <table class="table table-striped-columns table-hover  table-responsive-lg">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prenom</th>
+            <th scope="col">Email</th>
+            <th scope="col">Numero</th>
+            <th scope="col">Date</th>
+            <th scope="col" colspan="2">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let contact of contacts ">
+            <th scope="row">{{contact.id}}</th>
+            <td>{{contact.nom}}</td>
+            <td>{{contact.prenom}}</td>
+            <td>06-45-54-54-54 </td>
+            <td *ngFor="let donnee of contact.donnee">{{ donnee.nom }}</td>
+            <td><button class="btn btn-secondary" (click)="supprimerContact(contact.id)">Restaurer</button>&nbsp;&nbsp;<button class="btn btn-success" (click)="addContact()">Modifier</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Contact</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="">
+            <div class="col-md-12">
+              <label for="validationCustom01" class="form-label">Nom:</label>
+              <input type="text" class="form-control" id="validationCustom01" placeholder="Nom" required>
+            </div>
+            <div class="col-md-12">
+              <label for="validationCustom01" class="form-label">Prenom:</label>
+              <input type="text" class="form-control" id="validationCustom01" placeholder="Prenom" required>
+            </div>
+            <div class="col-md-12">
+              <label for="validationCustom01" class="form-label">Email:</label>
+              <input type="email" class="form-control" id="validationCustom01" placeholder="email" required>
+            </div>
+            <div class="col-md-12">
+              <label for="validationCustom01" class="form-label">Numero:</label>
+              <input type="number" class="form-control" id="validationCustom01" placeholder="Numero" required>
+            </div>
+            <div class="input-group mt-3 mb-2">
+              <label class="input-group-text" for="inputGroupFile01">Upload</label>
+              <input type="file" class="form-control" id="inputGroupFile01">
+            </div>
+            <button class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  

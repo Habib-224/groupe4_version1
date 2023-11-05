@@ -8,8 +8,13 @@ AccueilComponent
 const routes: Routes = [
     { path: '', component:  AuthentificationComponent},
     { path: 'accueil', component: AccueilComponent },
+    { path: 'corbeille', component: CorbeilleComponent } // Route de la page corbeille
+
 
 ];
+
+
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
